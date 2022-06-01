@@ -5,22 +5,29 @@ public class Main {
 
 
         public static void main(String[] args) {
+            SearchTree tree = new SearchTree(null);
+            tree.traverse(tree.getRoot());
 
-
-            MyLinkedList list = new MyLinkedList(null);
             String stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Sydney Canberra";
             String[] data = stringData.split(" ");
+
             for (String city : data) {
-                list.addItem(new Node(city));
+                tree.addItem(new Node(city));
+
+            }
+
+            while (tree.getRoot() != null ){
+
+                if (tree.getRoot().next() == null){
+                    System.out.println("Deleting last item which is " + tree.removeItem(tree.getRoot()));
+                }
+                tree.traverse(tree.getRoot());
+                tree.removeItem(tree.getRoot());
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
 
             }
 
 
-            list.removeItem(new Node("4"));
-            list.removeItem(list.getRoot());
-
-            list.removeItem(new Node("3"));
-            list.removeItem(list.getRoot());
         }
-        
+
 }
